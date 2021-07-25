@@ -1,0 +1,25 @@
+version: 2
+
+orbs:
+  heroku: circleci/heroku@0.0.10.
+
+workflows:
+  heroku_deploy:
+    jobs:
+      - build:
+      - heroku/deploy-via-git:
+        requires:
+          - build
+        filters:
+          branches:
+            only: sequencial-branch-filter
+jobs:
+  build:
+      docker:
+        - image: circleci/node:7.10
+
+      steps:
+        - checkout
+        - run:
+          name: Install dependancies
+          command: npm install 
