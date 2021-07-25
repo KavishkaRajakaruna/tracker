@@ -1,16 +1,11 @@
 var express = require('express');
 var router = express.Router();
+const vaccineStats = require('../controllers/vaccine-stats')
 
-router.get('/types', (req,res)=>{
-    res.send('NOT IMPLEMENTED: vaccine/types')
-})
+router.get('/types', vaccineStats.getTypes)
 
-router.get('/stats/local', (req,res)=>{
-    res.send('NOT IMPLEMENTED: vaccine/stats/local')
-})
+router.get('/stats/local', vaccineStats.getLocal)
 
-router.get('/stats/world', (req,res)=>{
-    res.send('NOT IMPLEMENTED: vaccine/stats/world')
-})
+router.get('/stats/world', vaccineStats.worldStats)
 
 module.exports=router;
